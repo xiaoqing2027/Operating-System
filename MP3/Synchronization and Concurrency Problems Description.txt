@@ -1,0 +1,50 @@
+Objective:
+
+For this machine problem you will be writing some concurrent programs using Python's threading library, which includes a Semaphore class that you will use for synchronization.
+
+
+Synchronization Problems
+
+1. At the IIT Disc Golf Range
+
+Down at the new IIT disc golf(frolf for short) range, there are numerous tees at which disc golfers(frolfers for short) can be 
+found practicing their throws. Each frolfer will call for a bucket of N discs at a time, then proceed to throw them one by one until empty, at which point they'll call for another bucket. When there are insufficient discs left in the central stash to satisfy a call for a bucket, all practice ceases and the retriever cart takes to the field to gather discs to replenish the supply.
+
+You are to implement a properly synchronized simulation for this probelm in Python using Semaphores and  -- if you wish -- the LightSwitch construct. A seperate thread should be created for tha cart and each frolfer. Your simulation should allow the following items to be easily configurable:
+* The initial size of the stash
+* The number of discs per bucket(which determines how many discs a frolfer can throw before calling for another bucket and when cart needs to head out to the field).
+* The number of frolfer threads.
+
+Your implementation should obey the following rules:
+* Frolfers should be allowed throw concurrently.
+* Frolfers may not throw whilst the cart is out of on the field.
+* Discs may never be lost(or gained)! They are either in the stash, on the filed or with frolfer.
+* When the stash needs to be replenished the cart thread has priority over frolfers. Frolfers that are currently practicing 
+is interrupted so the cart can head out.
+
+
+2. Dance Mixer
+
+At the Willowbrook ballroom they regularly run a "dancer mixer" event, wherein N leaders line up on one side of 
+the ballroom and M followers line up on the other. They pair up one by one them proceed to dance around the floor 
+-- after which they return to the end of their respective lines. This continues until the band leads decides it is
+time to switch dances and the pairing up of dancers is tapered off. When all dances have made it off the dance floor
+and back to their repective line, the music changes and the dancing begins again. 
+
+NOTE: after dancing, leaders and followers may line back up at their leisure.
+Your code should allow for easy configration of the number of leaders and followers, be starvation free, and allow for 
+the maximum amount of concurrency. If necessary, you may wish to use the deque data struture in Python.
+
+
+3. Dining Philosophers
+
+For this problem you will implement and time different solutions to the dining philosophers problem. 
+The solutions we discussed include:
+
+* The "footman" solution: where a single semaphore(a multiplex) limits the number of philosophers that can simultaneously "try" to dine.
+* The "left-handed philosopher" solution: where one of the philosophers attempt to pick up his left fork first(while all other philosophers start with their right).
+* The Tanenbaum solution: which has phisolophers re-checking forks for neighboring, hungry philosophers.
+
+You are to write a program that will apply each solution, in succession, to a specified number of philosophers and rounds of dining, then print out the amount of time to complete each simulation.
+
+Note: Improving Tanenbaum solution to be starvarion free.

@@ -1,0 +1,45 @@
+3_philosophers.txt
+
+NOTE:::: 
+	I put first Tanenbaum solution(solution 1) with starvation-free in 3_philosophers.py, 
+	and second Tanenbaum solution(solution 2) with starvation-free in 3_Tanenbaum_solution_2.py
+
+
+with starvation, result are this:
+
+	Num of philosophers: 20 
+	NUm of meal per philosophers: 100
+
+	1. Footman solution---Time: 23.900s
+	2. left_hand solution ---Time: 21.323s
+	3. Tanenbaum solution ---Time: 15.342s
+
+
+After solving starvation of Tanenbaum solution:
+
+	Num of philosophers: 5 
+	Num of meal per philosophers: 100
+
+	1. Footman solution---Time: 17.786s
+	2. left_hand solution ---Time: 16.718s
+	3. Tanenbaum solution(solution 1) ---Time: 15.510s
+	4. Tanenbaum solution(solution 2)  ---Time: 16.060s
+
+
+Summary:
+
+According to my result, 
+Tanenbaum method are best. For Footman and left_hand methods, there has two situation that 
+block philosophers, one is that its left/right philosophers is eating, current philosopher cannot get forks, 
+the other is that its right philosophers is waiting for its right of its right philosopher, same to left philosopher.
+For Tanenbaum method, only one situation exists, the situation is its left/right philosophers is eating. 
+
+left_hand method is better than Footman method. I have tested almost 20 groups data(combination of num of philosopher(max = 20)
+ and different num of meal per philosopher(max = 1000)). I found that left_hand speed is always quicker. 
+I don't understand fully why this happends. As far as I understand, let's assume Num of philosophers is 5,  
+both methods allow two philosophers eat at the same time, but footman only allows 4 philosophers to have chance to get forks, 
+left_hand allows 5 to get forks. Maybe this situation exists: for footman, there have two philosophers are eating, if one philosopher finished eating, 
+another philosopher could come in, but this coming guy also needs forks from the other philosopher who is eating, 
+so only one philosopher could eat in this time. When other philosophers who could eat come, time(waiting for this guy who is allowed come by footman)
+has wasted.
+
